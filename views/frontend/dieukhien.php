@@ -5,6 +5,9 @@
             <div class="container overflow-hidden text-center">
                 <div class="row gx-5">
                     <div class="col">
+                        <a href="index.php?option=dieukhienden.php"
+                        style = "text-decoration:none "
+                        >
                         <div class="p-3">
                             <span class="den">
                                 <i class="bi bi-lightbulb-fill" style="font-size: 70px; color: white"></i>
@@ -14,6 +17,7 @@
                                 Hệ thống ánh sáng
                             </h5>
                         </div>
+                        </a>
                     </div>
                     <div class="col">
                         <div class="p-3">

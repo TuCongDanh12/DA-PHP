@@ -22,7 +22,7 @@
 						<li><a href="index.php?option=user">Users</a></li>
 						<!-- <li><a href="holidays.php">Holidays</a></li> -->
 						<!-- <li><a href="leaves-employee.php">Employee Leave</a></li> -->
-						<li><a href="departments.php">Gardens</a></li>
+						<li><a href="index.php?option=garden">Gardens</a></li>
 						<!-- <li><a href="designations.php">Designations</a></li>
 						<li><a href="timesheet.php">Timesheet</a></li>
 						<li><a href="overtime.php">Overtime</a></li> -->

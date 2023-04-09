@@ -1,19 +1,19 @@
 <?php
-session_start();
-error_reporting(0);
-include_once('includes/config.php');
-include_once("includes/functions.php");
-if (strlen($_SESSION['userlogin']) == 0) {
-    header('location:login.php');
-} elseif (isset($_GET['delid'])) {
-    $rid = intval($_GET['delid']);
-    $sql = "DELETE from employees where id=:rid";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':rid', $rid, PDO::PARAM_STR);
-    $query->execute();
-    echo "<script>alert('Employee Has Been Deleted');</script>";
-    echo "<script>window.location.href ='employees.php'</script>";
-}
+// session_start();
+// error_reporting(0);
+// include_once('includes/config.php');
+// include_once("includes/functions.php");
+// if (strlen($_SESSION['userlogin']) == 0) {
+//     header('location:login.php');
+// } elseif (isset($_GET['delid'])) {
+//     $rid = intval($_GET['delid']);
+//     $sql = "DELETE from employees where id=:rid";
+//     $query = $dbh->prepare($sql);
+//     $query->bindParam(':rid', $rid, PDO::PARAM_STR);
+//     $query->execute();
+//     echo "<script>alert('Employee Has Been Deleted');</script>";
+//     echo "<script>window.location.href ='employees.php'</script>";
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -376,7 +376,9 @@ if (strlen($_SESSION['userlogin']) == 0) {
                 <!-- <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
 							<div class="profile-widget">
 								<div class="profile-img">
-									<a href="profile.html" class="avatar"><img src="employees/<?php echo htmlentities($row->Picture); ?>" alt="picture"></a>
+									<a href="profile.html" class="avatar"><img src="employees/<?php 
+                                    // echo htmlentities($row->Picture); 
+                                    ?>" alt="picture"></a>
 								</div>
 								<div class="dropdown profile-action">
 									<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -385,8 +387,12 @@ if (strlen($_SESSION['userlogin']) == 0) {
 										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
 									</div>
 								</div>
-								<h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html"><?php echo htmlentities($row->FirstName) . " " . htmlentities($row->LastName); ?></a></h4>
-								<div class="small text-muted"><?php echo htmlentities($row->Designation); ?></div>
+								<h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html"><?php 
+                                // echo htmlentities($row->FirstName) . " " . htmlentities($row->LastName); 
+                                ?></a></h4>
+								<div class="small text-muted"><?php 
+                                // echo htmlentities($row->Designation); 
+                                ?></div>
 							</div>
 						</div>	 -->
                 <div class="contai">

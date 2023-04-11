@@ -5,7 +5,7 @@ const http = require('http');
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server);
+const inout = new Server(server);
 
 const MQTT_SERVER = "mqtt.ohstem.vn";
 const MQTT_PORT = 1883;
@@ -24,6 +24,7 @@ const list_feed = [
   "V15",
   "V16"
 ];
+
 
 const client = mqtt.connect(`mqtt://${MQTT_SERVER}:${MQTT_PORT}`, {
   username: MQTT_USERNAME,
@@ -46,13 +47,13 @@ client.on('connect', () => {
 client.on('message', (topic, message) => {
   console.log(`Nhan du lieu: ${topic.toString()} ${message.toString()}`);
   if(topic.toString() == 'nhombaton/feeds/V1'){
-    io.emit('templateValue', message.toString());
+    inout.emit('templateValue', message.toString());
   } else if(topic.toString() == 'nhombaton/feeds/V2'){
-    io.emit('humiValue', message.toString());
+    inout.emit('humiValue', message.toString());
   } else if(topic.toString() == 'nhombaton/feeds/V3'){
-    io.emit('SandHumiValue', message.toString());
+    inout.emit('SandHumiValue', message.toString());
   } else if(topic.toString() == 'nhombaton/feeds/V4'){
-    io.emit('lightValue', message.toString());
+    inout.emit('lightValue', message.toString());
   } else {
     //NOTHING
   }
@@ -61,26 +62,26 @@ client.on('message', (topic, message) => {
 
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/socket.html');
 });
 
-io.on('connection', (socket) => {
+inout.on('connection', (socket) => {
   socket.on('automationModel', msg => {
-    io.emit('automationModel', msg);
+    inout.emit('automationModel', msg);
     client.publish('nhombaton/feeds/V14', msg.toString());
   });
 });
 
-io.on('connection', (socket) => {
+inout.on('connection', (socket) => {
   socket.on('setLedValue', msg => {
-    io.emit('setLedValue', msg);
+    inout.emit('setLedValue', msg);
     client.publish('nhombaton/feeds/V12', msg.toString());
   });
 });
 
-io.on('connection', (socket) => {
+inout.on('connection', (socket) => {
   socket.on('setPumpValue', msg => {
-    io.emit('setPumpValue', msg);
+    inout.emit('setPumpValue', msg);
     client.publish('nhombaton/feeds/V16', msg.toString());
   });
 });

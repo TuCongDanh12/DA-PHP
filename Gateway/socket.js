@@ -24,6 +24,34 @@ const list_feed = [
   "V15",
   "V16"
 ];
+// Bien truyen du lieu
+var V1;
+var V2;
+var V3;
+var V4;
+var V10;
+var V12;
+var V13;
+var V14;
+var V15;
+var V16;
+
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+fetch('http://localhost/index.php', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    data: 'value'
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+})
+.catch(error => console.error(error));
 
 const client = mqtt.connect(`mqtt://${MQTT_SERVER}:${MQTT_PORT}`, {
   username: MQTT_USERNAME,
@@ -47,12 +75,16 @@ client.on('message', (topic, message) => {
   console.log(`Nhan du lieu: ${topic.toString()} ${message.toString()}`);
   if(topic.toString() == 'nhombaton/feeds/V1'){
     io.emit('templateValue', message.toString());
+    V1 = message.toString();
   } else if(topic.toString() == 'nhombaton/feeds/V2'){
     io.emit('humiValue', message.toString());
+    V2 = message.toString();
   } else if(topic.toString() == 'nhombaton/feeds/V3'){
     io.emit('SandHumiValue', message.toString());
+    V3 = message.toString();
   } else if(topic.toString() == 'nhombaton/feeds/V4'){
     io.emit('lightValue', message.toString());
+    V3 = message.toString();
   } else {
     //NOTHING
   }
@@ -68,6 +100,7 @@ io.on('connection', (socket) => {
   socket.on('automationModel', msg => {
     io.emit('automationModel', msg);
     client.publish('nhombaton/feeds/V14', msg.toString());
+    V14 = msg.toString();
   });
 });
 
@@ -75,6 +108,7 @@ io.on('connection', (socket) => {
   socket.on('setLedValue', msg => {
     io.emit('setLedValue', msg);
     client.publish('nhombaton/feeds/V12', msg.toString());
+    V12 = msg.toString();
   });
 });
 
@@ -82,6 +116,7 @@ io.on('connection', (socket) => {
   socket.on('setPumpValue', msg => {
     io.emit('setPumpValue', msg);
     client.publish('nhombaton/feeds/V16', msg.toString());
+    V16 = msg.toString();
   });
 });
 

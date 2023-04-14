@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION)) { session_start(); } ?>
 <header>
     <div class="header">
         <div class="logo">
@@ -6,13 +7,9 @@
 
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Trang trại Nobita
+                <?php echo "Trang trại của " .$_SESSION['user_name'] ?>
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+           
         </div>
         <div class="icon">
             <i class="bi bi-bell-fill" style="font-size: 30px;"></i>

@@ -5,25 +5,30 @@
         <div class="device1">
             <div class="container overflow-hidden text-center">
                 <div class="row gx-5">
-                    <div class="col">
-                        <div class="p-3">
-                            <span class="den">
-                                <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
-                            </span>
-                            <h4 style="color:white">Đèn</h4>
-                            <h5 style="color:rgba(160, 152, 174, 1)">Hệ thống ánh sáng</h5>
 
-                        </div>
+                    <div class="col">
+                        <a href="index.php?option=lichhdden.php" style="text-decoration:none ">
+                            <div class="p-3">
+                                <span class="den">
+                                    <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
+                                </span>
+                                <h4 style="color:white">Đèn</h4>
+                                <h5 style="color:rgba(160, 152, 174, 1)">Hệ thống ánh sáng</h5>
+
+                            </div>
+                        </a>
                     </div>
                     <div class="col">
-                        <div class="p-3">
-                            <span class="nuoc">
-                                <i class="bi bi-droplet" style="font-size:70px;color:white"></i>
-                            </span>
-                            <h4 style="color:white">Vòi nước</h4>
-                            <h5 style="color:rgba(160, 152, 174, 1)">Hệ thống nước</h5>
+                        <a href="index.php?option=lichhdmaybom.php" style="text-decoration:none ">
+                            <div class="p-3">
+                                <span class="nuoc">
+                                    <i class="bi bi-droplet" style="font-size:70px;color:white"></i>
+                                </span>
+                                <h4 style="color:white">Vòi nước</h4>
+                                <h5 style="color:rgba(160, 152, 174, 1)">Hệ thống nước</h5>
 
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

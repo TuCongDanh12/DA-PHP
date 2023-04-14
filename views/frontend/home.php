@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +18,9 @@
 </head>
 
 <body>
+ <?php 
+//  echo "hello ". $_SESSION['user_name'] 
+ ?>
     <?php include_once("includes/header.php"); ?>
     <div class="content">
         <div class="content">

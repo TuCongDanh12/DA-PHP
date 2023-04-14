@@ -29,40 +29,34 @@ $result = mysqli_query($conn, $sql);
     <!-- <link rel="stylesheet" href="assets/css/defaultlayout.css" /> -->
     <link rel="stylesheet" href="assets/js/defaultlayout.js" />
 
-    <!-- <link rel="stylesheet" href="assets/css/schedule.css" /> -->
-
-    <!-- <link rel="stylesheet" href="assets/css/scheduleitem.css" /> -->
+    <link rel="stylesheet" href="assets/js/scheduleitem.js" />
+    <link rel="stylesheet" href="assets/css/scheduleitem.css" />
 
     <link rel="stylesheet" href="assets/css/controlitem.css" />
     <link rel="stylesheet" href="assets/js/controlitem.js" />
-    <title>Điều khiển đèn</title>
+    <title>Lịch hoạt động đèn</title>
 </head>
 
 <body>
-    <?php include_once("includes/header.php"); ?>
+    <?php
+    // include_once("includes/header.php"); 
+    ?>
     <div class="content">
         <div class="content">
             <div class="row g-0 text-center">
                 <?php include_once("includes/sidebar.php"); ?>
                 <div class="col-sm-6 col-md-8  ">
                     <div class="content">
-                        <H2 class="title">ĐIỀU KHIỂN THIẾT BỊ</H2>
-                        <p class="credit"> <i class="icon fas fa-calendar-week mr-5"></i> Điều khiển<i class="fas fa-caret-right mr-5"></i> Hệ thống ánh sáng</p>
+                        <H2 class="title">LỊCH HOẠT ĐỘNG CỦA THIẾT BỊ</H2>
+                        <p class="credit">
+                            <!-- <i class="icon fas fa-calendar-week mr-5"></i>  -->
+                            Lịch hoạt động
+                            <i class="fas fa-caret-right mr-5"></i>
+                            Hệ thống ánh sáng
+                        </p>
                         <form action="" method="POST">
                             <div class="phankhu">
-                                <select style=" 
-                            float: center;
-                                color: var(--text);
-                                font-size: 18px;
-                               width: 200px;
-                                font-weight: 600;
-                                text-align: center;
-                               border-radius: 10px;
-                               margin-bottom: 20px;
-                               margin-left: 100px;
-                               
-                                border: 3px solid blue;
-                               " class="dropdown" placeholder="Please choose" name="phankhu">
+                                <select class="dropdown" placeholder="Please choose" name="phankhu">
                                     <?php
                                     if (mysqli_num_rows($result) > 0) {
 
@@ -73,6 +67,7 @@ $result = mysqli_query($conn, $sql);
 
                                                 <?php
                                                 echo $row['subfarm_name']
+
                                                 ?>
                                             </option>
 
@@ -91,14 +86,17 @@ $result = mysqli_query($conn, $sql);
                             $b = $_POST['phankhu'];
                         }
                         ?>
+
                         <?php
-                        $dv = "SELECT distinct * FROM `user`, `farm`, `subfarm`,`device` where 
-                            user.user_name= '$a' and user.user_id=farm.user_id and farm.farm_id=subfarm.farm_id 
-                            and subfarm.subfarm_name= '$b'and subfarm.subfarm_id=device.subfarm_id and device.device_name='den'
+                        $dv = "SELECT distinct * FROM `user`, `farm`, `subfarm`,`device`,`schedule` where 
+                        user.user_name= '$a' and user.user_id=farm.user_id and farm.farm_id=subfarm.farm_id 
+                        and subfarm.subfarm_name= '$b'and subfarm.subfarm_id=device.subfarm_id and device.device_name='den'
+                        and schedule.device_id= device.device_id
                             ";
                         $result_dv = mysqli_query($conn, $dv);
                         ?>
-                        <div class="dev-control-container">
+
+                        <div class="schedule-container">
                             <div class="grid">
                                 <div class="row">
                                     <?php
@@ -106,41 +104,57 @@ $result = mysqli_query($conn, $sql);
 
                                         while ($row = mysqli_fetch_assoc($result_dv)) {
                                     ?>
-                                            <div class="dev-control c-6">
-                                                <div class="dev-control-content-container">
-                                                    <div class="dev-control-content">
-                                                        <div class="Den"></div>
-                                                        <div class="dev-text">
-                                                            <b class="dev-name"><?php echo "Đèn " . $row['device_id'] ?></b>
-                                                            <div class="dev-code"><?php echo "id= " . $row['device_id'] ?></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="control-content">
-                                                        <p style="font-weight: bold;">Mức:</p>
-                                                        <div class="slider-content">
-                                                            <input type="range" min="0" max="10" step="1" value="0">
+                                            <div class="device c-6">
+                                                <div class="schedule-2">
+                                                    <div class="background12">
+                                                        <div class="statuscolor"></div>
+                                                        <div class="details">
+                                                            <div class="chiu-sng-bui"><?php echo "Đèn " . $row['device_id'] ?></div>
+                                                            <div class="xx">#1223xx</div>
 
+
+                                                            <div class="date">
+                                                                <img class="calendar-icon" alt="" src="assets/svg/calendar.svg" />
+                                                                <div class="hng-ngy"><?php echo $row['date_type'] ?></div>
+                                                            </div>
+                                                            <div class="hours">
+                                                                <img class="calendar-icon" alt="" src="assets/svg/clock.svg" />
+                                                                <div class="hng-ngy"><?php echo $row['time_start'] . '-' . $row['time_end'] ?></div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <img class="dots-icon" alt="" src="assets/svg//dots.svg" /> -->
+                                                        <div class="dots-icon" placeholder="">
+                                                            <select>
+                                                                <button name="edit">
+                                                                    <option> Edit </option>
+                                                                </button>
+                                                                <button name="delete">
+                                                                    <option> Delete </option>
+                                                                </button>
+
+                                                            </select>
                                                         </div>
 
-                                                        <form action="" method="POST">
-                                                            <label class="switch">
-                                                                <input type="checkbox" name="status">
-                                                                <div>
-                                                                    <span></span>
-                                                                </div>
-                                                            </label>
-                                                        </form>
                                                     </div>
                                                 </div>
-
-
                                             </div>
-                                    <?php }
-                                    } ?>
+
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+
+
+
+
+
+
+
 
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -148,8 +162,9 @@ $result = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
-    <script src="assets/css/defaultlayout.js"></script>
-    <script src="assets/css/controlitem.js"></script>
+    <script src=" assets/css/defaultlayout.js">
+    </script>
+
 </body>
 
 </html>

@@ -35,7 +35,7 @@ $result = mysqli_query($conn, $sql);
 
     <link rel="stylesheet" href="assets/css/controlitem.css" />
     <link rel="stylesheet" href="assets/js/controlitem.js" />
-    <title>Điều khiển đèn</title>
+    <title>Điều khiển máy bơm</title>
 </head>
 
 <body>
@@ -47,7 +47,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="col-sm-6 col-md-8  ">
                     <div class="content">
                         <H2 class="title">ĐIỀU KHIỂN THIẾT BỊ</H2>
-                        <p class="credit"> <i class="icon fas fa-calendar-week mr-5"></i> Điều khiển<i class="fas fa-caret-right mr-5"></i> Hệ thống ánh sáng</p>
+                        <p class="credit"> <i class="icon fas fa-calendar-week mr-5"></i> Điều khiển<i class="fas fa-caret-right mr-5"></i> Hệ thống nước</p>
                         <form action="" method="POST">
                             <div class="phankhu">
                                 <select style=" 
@@ -94,11 +94,11 @@ $result = mysqli_query($conn, $sql);
                         <?php
                         $dv = "SELECT distinct * FROM `user`, `farm`, `subfarm`,`device` where 
                             user.user_name= '$a' and user.user_id=farm.user_id and farm.farm_id=subfarm.farm_id 
-                            and subfarm.subfarm_name= '$b'and subfarm.subfarm_id=device.subfarm_id and device.device_name='den'
+                            and subfarm.subfarm_name= '$b'and subfarm.subfarm_id=device.subfarm_id and device.device_name='bom nuoc'
                             ";
                         $result_dv = mysqli_query($conn, $dv);
                         ?>
-                        <div class="dev-control-container">
+                         <div class="dev-control-container">
                             <div class="grid">
                                 <div class="row">
                                     <?php
@@ -111,7 +111,7 @@ $result = mysqli_query($conn, $sql);
                                                     <div class="dev-control-content">
                                                         <div class="Den"></div>
                                                         <div class="dev-text">
-                                                            <b class="dev-name"><?php echo "Đèn " . $row['device_id'] ?></b>
+                                                            <b class="dev-name"><?php echo "Máy bơm " . $row['device_id'] ?></b>
                                                             <div class="dev-code"><?php echo "id= " . $row['device_id'] ?></div>
                                                         </div>
                                                     </div>

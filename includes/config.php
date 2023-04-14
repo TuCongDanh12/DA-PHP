@@ -1,16 +1,12 @@
-<?php 
-// DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','1234567890danh');
-define('DB_NAME','smarthr');
-// Establish database connection.
-try
+<?php
+$host="localhost";
+$username="root";
+$password="1234567890danh";
+$database="farm";
+$conn=mysqli_connect($host,$username,$password,$database);
+mysqli_query($conn,"SET NAMES 'utf8'");
+if (mysqli_connect_error())
 {
-$dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-}
-catch (PDOException $e)
-{
-exit("Error: " . $e->getMessage());
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 ?>

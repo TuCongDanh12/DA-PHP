@@ -1,48 +1,83 @@
-<!-- <?php
-		// session_start();
-		// error_reporting(0);
-		// include_once("includes/config.php");
-		// if($_SESSION['userlogin']>0){
-		// 	header('location:index.php');
-		// }elseif(isset($_POST['login'])){
-		// 	$_SESSION['userlogin'] = $_POST['username'];
-		// 	$username = htmlspecialchars($_POST['username']);
-		// 	$password = htmlspecialchars($_POST['password']);
-		// 	$sql = "SELECT UserName,Password from users where UserName=:username";
-		// 	$query = $dbh->prepare($sql);
-		// 	$query->bindParam(':username',$username,PDO::PARAM_STR);
-		// 	$query-> execute();
-		// 	$results=$query->fetchAll(PDO::FETCH_OBJ);
-		// 	if($query->rowCount() > 0){
-		// 		foreach ($results as $row) {
-		// 			$hashpass=$row->Password;
-		// 		}//verifying Password
-		// 		if (password_verify($password, $hashpass)) {
-		// 			$_SESSION['userlogin']=$_POST['username'];
-		// 			echo "<script>window.location.href= 'index.php'; </script>";
-		// 		}
-		// 		else {
-		// 			$wrongpassword='
-		// 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		// 			<strong>Oh Snapp!😕</strong> Alert <b class="alert-link">Password: </b>You entered wrong password.
-		// 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		// 				<span aria-hidden="true">&times;</span>
-		// 			</button>
-		// 			</div>';
-		// 		}
-		// 	}
-		// 	//if username or email not found in database
-		// 	else{
-		// 		$wrongusername='
-		// 		<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		// 			<strong>Oh Snapp!🙃</strong> Alert <b class="alert-link">UserName: </b> You entered a wrong UserName.
-		// 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		// 				<span aria-hidden="true">&times;</span>
-		// 			</button>
-		// 		</div>';
-		// 	}
-		// }
-		?> -->
+<?php
+// session_start();
+// error_reporting(0);
+// include_once("includes/config.php");
+// if($_SESSION['userlogin']>0){
+// 	header('location:index.php');
+// }elseif(isset($_POST['login'])){
+// 	$_SESSION['userlogin'] = $_POST['username'];
+// 	$username = htmlspecialchars($_POST['username']);
+// 	$password = htmlspecialchars($_POST['password']);
+// 	$sql = "SELECT user_name,password from user where user_name=:username";
+// 	$query = $dbh->prepare($sql);
+// 	$query->bindParam(':username',$username,PDO::PARAM_STR);
+// 	$query-> execute();
+// 	$results=$query->fetchAll(PDO::FETCH_OBJ);
+// 	if($query->rowCount() > 0){
+// 		foreach ($results as $row) {
+// 			$hashpass=$row->Password;
+// 		}//verifying Password
+// 		if (password_verify($password, $hashpass)) {
+// 			$_SESSION['userlogin']=$_POST['username'];
+// 			echo "<script>window.location.href= 'index.php'; </script>";
+// 		}
+// 		else {
+// 			$wrongpassword='
+// 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+// 			<strong>Oh Snapp!😕</strong> Alert <b class="alert-link">Password: </b>You entered wrong password.
+// 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+// 				<span aria-hidden="true">&times;</span>
+// 			</button>
+// 			</div>';
+// 		}
+// 	}
+// 	//if username or email not found in database
+// 	else{
+// 		$wrongusername='
+// 		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+// 			<strong>Oh Snapp!🙃</strong> Alert <b class="alert-link">UserName: </b> You entered a wrong UserName.
+// 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+// 				<span aria-hidden="true">&times;</span>
+// 			</button>
+// 		</div>';
+// 	}
+// }
+// print_r($_POST);
+session_start();
+include "./includes/config.php";
+if (isset($_POST['login']) == true) {
+	$username = mysqli_real_escape_string($conn,$_POST['username']);
+	$password = mysqli_real_escape_string($conn,$_POST['password']);
+	// if (empty($username)) {
+	// 	array_push($errors, "Username is required");
+	// }
+	// if (empty($password)) {
+	// 	array_push($errors, "Password is required");
+	// }
+
+	// echo "<p> $username $password</p>";
+	$sql = "SELECT * FROM user where user_name ='$username' and password ='$password'";
+	$query = mysqli_query($conn, $sql);
+	$num_row= mysqli_num_rows($query);
+
+
+	if($num_row != 0){
+		$user = $query ->fetch_array();
+		$_SESSION['user_name']=$user['user_name'];
+		// $_SESSION['id']=$user['id'];
+		// print_r($user);
+		header("location:index.php?option=home.php");
+		exit();
+	}
+	else{
+		header("location:index.php");
+		echo "Tài khoản hoặc mật khẩu không đúng";
+		exit();
+	}
+	// $stmt ->execute([$username, $password]);
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +104,7 @@
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/html5shiv.min.js"></scri>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
 </head>
@@ -96,7 +131,9 @@
 								<input class="form-control" name="username" required type="text">
 							</div>
 							<?php
-							//  if($wrongusername){echo $wrongusername;}
+							// if ($wrongusername) {
+							// 	echo $wrongusername;
+							// }
 							?>
 							<div class="form-group">
 								<div class="row">
@@ -107,7 +144,9 @@
 								<input class="form-control" name="password" required type="password">
 							</div>
 							<?php
-							// if($wrongpassword){echo $wrongpassword;}
+							// if ($wrongpassword) {
+							// 	echo $wrongpassword;
+							// }
 							?>
 
 							<div class="form-group text-center">
@@ -124,9 +163,9 @@
 								</div>
 							</div>
 
-							<!-- <div class="account-footer">
-									<p>Having Trouble? report an issue on github <a target="https://github.com/MusheAbdulHakim/Smarthr---hr-payroll-project-employee-management-System/issues" href="https://github.com/MusheAbdulHakim/Smarthr---hr-payroll-project-employee-management-System/issues">Github issues</a></p>
-								</div> -->
+							<div class="account-footer">
+								<p>Having Trouble? report an issue on github <a target="https://github.com/MusheAbdulHakim/Smarthr---hr-payroll-project-employee-management-System/issues" href="https://github.com/MusheAbdulHakim/Smarthr---hr-payroll-project-employee-management-System/issues">Github issues</a></p>
+							</div>
 						</form>
 						<!-- /Account Form -->
 

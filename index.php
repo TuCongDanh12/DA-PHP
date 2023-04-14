@@ -46,5 +46,7 @@ if ($result->num_rows > 0) {
   echo "0 kết quả";
 }
 
-$conn->close(); */
+$conn->close(); 
+
+*/
 ?>

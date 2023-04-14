@@ -40,21 +40,7 @@ for($i = 0; $i < 10; $i++){
   printf("client connected\n");
 }
 
-for ($i = 0; $i< 10; $i++) {
-  $mqtt = new MqttClient($server, $port, $clientId[$i], $mqtt_version); // khởi tạo mới cho mỗi lần loop
-  $mqtt->connect($connectionSettings, $clean_session);
-  $mqtt->publish(
-    // topic
-    $clientId[$i],
-    // payload
-    "0", // payload phải là string hoặc buffer, không thể là số 0
-    // qos
-    0,
-    // retain
-    true
-  );
-  printf("msg $i send\n");
-}
+
 $mqtt->subscribe('nhombaton/feeds/V1', function($topic, $message) {
   echo "Received message on topic $topic: $message\n";
 });

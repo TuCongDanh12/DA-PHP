@@ -1,52 +1,49 @@
-
-
 <?php
+require('vendor/autoload.php');
 
-header('Content-Type: application/json');
+use \PhpMqtt\Client\MqttClient;
+use \PhpMqtt\Client\ConnectionSettings;
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-$response = array(
-    'message' => 'Received data:',
-    'data' => $data
+$server   = 'mqtt.ohstem.vn';
+$port     = 1883;
+$clientId = array(
+  "nhombaton/feeds/V1",
+  "nhombaton/feeds/V2",
+  "nhombaton/feeds/V3",
+  "nhombaton/feeds/V4",
+  "nhombaton/feeds/V10",
+  "nhombaton/feeds/V12",
+  "nhombaton/feeds/V13",
+  "nhombaton/feeds/V14",
+  "nhombaton/feeds/V15",
+  "nhombaton/feeds/V16"
 );
+$username = 'nhombaton';
+$password = '';
+$clean_session = false;
+$mqtt_version = MqttClient::MQTT_3_1_1;
 
-echo json_encode($response);
-?>
+$connectionSettings = (new ConnectionSettings)
+  ->setUsername($username)
+  ->setPassword($password)
+  ->setKeepAliveInterval(6000) //Thời gian sống của chương trình, ở đây mình xét 6000s
+  ->setLastWillTopic('nhombaton/feeds/')
+  ->setLastWillMessage('client disconnect')
+  ->setLastWillQualityOfService(1);
 
+$mqtt = new MqttClient($server, $port, $clientId[0], $mqtt_version); // Sửa lại
 
-
-
-<?php
-/* $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "DB_farm";
-
-// Tạo kết nối đến cơ sở dữ liệu
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Kiểm tra kết nối
-if ($conn->connect_error) {
-  die("Kết nối thất bại: " . $conn->connect_error);
+if (isset($_POST['submit'])) {
+  $input_data = $_POST['input_data'];
+  $topic = 'nhombaton/feeds/V1'; // Đặt tên topic muốn publish dữ liệu lên
+  $mqtt->connect($connectionSettings, $clean_session);
+  $mqtt->publish($topic, $input_data, 0, false);
+  printf("Data published to topic %s: %s\n", $topic, $input_data);
 }
 
-echo "Kết nối thành công";
-
-// Thực hiện truy vấn và in kết quả
-$sql = "SELECT * FROM history";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  // Duyệt qua các bản ghi và in ra màn hình
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-  }
-} else {
-  echo "0 kết quả";
-}
-
-$conn->close(); 
-
-*/
 ?>
+
+<form method="post" id="mqtt-form">
+  <input type="text" name="input_data" />
+  <button type="submit" name="submit">Send</button>
+</form>

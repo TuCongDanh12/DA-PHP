@@ -26,16 +26,16 @@ class Route
         $pathView = 'views/frontend/';
         if (isset($_REQUEST['option'])) {
             $pathView .= $_REQUEST['option'];
-            if (isset($_REQUEST['id'])) {
-                require_once($pathView . '-detail.php');
-            } else {
-                if (isset($_REQUEST['cat'])) {
-                    require_once($pathView . '-category.php');
-                } else {
-                    require_once($pathView);
-                    //echo "..." . $_REQUEST['option'];
-                }
-            }
+            // if (isset($_REQUEST['id'])) {
+            //     require_once($pathView . '-detail.php');
+            // } else {
+            //     if (isset($_REQUEST['cat'])) {
+            //         require_once($pathView . '-category.php');
+            //     } else {
+            //         require_once($pathView);
+            //         //echo "..." . $_REQUEST['option'];
+            //     }
+            // }
         } else {
             $pathView .= 'login.php';
         }

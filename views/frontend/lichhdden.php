@@ -8,6 +8,8 @@ $sql = "SELECT distinct * FROM `user`, `farm`, `subfarm` where
 user.user_name= '$a' and user.user_id=farm.user_id and farm.farm_id=subfarm.farm_id 
 ";
 $result = mysqli_query($conn, $sql);
+// $c = "SELECT date_format(`time_start`,'%h:%i %p') as time_start from `schedule`";
+// $result_1 = mysqli_query($conn, $c);
 
 
 ?>
@@ -21,8 +23,12 @@ $result = mysqli_query($conn, $sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+   
+
+ 
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style1.css"> -->
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/grid.css" />
 
@@ -32,8 +38,8 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="assets/js/scheduleitem.js" />
     <link rel="stylesheet" href="assets/css/scheduleitem.css" />
 
-    <link rel="stylesheet" href="assets/css/controlitem.css" />
-    <link rel="stylesheet" href="assets/js/controlitem.js" />
+    <!-- <link rel="stylesheet" href="assets/css/controlitem.css" />
+    <link rel="stylesheet" href="assets/js/controlitem.js" /> -->
     <title>Lịch hoạt động đèn</title>
 </head>
 
@@ -48,6 +54,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="col-sm-6 col-md-8  ">
                     <div class="content">
                         <H2 class="title">LỊCH HOẠT ĐỘNG CỦA THIẾT BỊ</H2>
+
                         <p class="credit">
                             <!-- <i class="icon fas fa-calendar-week mr-5"></i>  -->
                             Lịch hoạt động
@@ -88,10 +95,10 @@ $result = mysqli_query($conn, $sql);
                         ?>
 
                         <?php
-                        $dv = "SELECT distinct * FROM `user`, `farm`, `subfarm`,`device`,`schedule` where 
+                        $dv = "SELECT distinct device.device_id ,schedule.schedule_id,schedule.date_type, date_format(`time_start`,'%h:%i %p') as time_start ,date_format(`time_end`,'%h:%i %p') as time_end FROM `user`, `farm`, `subfarm`,`device`,`schedule` where 
                         user.user_name= '$a' and user.user_id=farm.user_id and farm.farm_id=subfarm.farm_id 
                         and subfarm.subfarm_name= '$b'and subfarm.subfarm_id=device.subfarm_id and device.device_name='den'
-                        and schedule.device_id= device.device_id
+                        and schedule.device_id= device.device_id;
                             ";
                         $result_dv = mysqli_query($conn, $dv);
                         ?>
@@ -115,7 +122,12 @@ $result = mysqli_query($conn, $sql);
 
                                                             <div class="date">
                                                                 <img class="calendar-icon" alt="" src="assets/svg/calendar.svg" />
-                                                                <div class="hng-ngy"><?php echo $row['date_type'] ?></div>
+                                                                <div class="hng-ngy"><?php
+
+                                                                                        // while($row_1 = mysqli_fetch_assoc($result_d1)){
+                                                                                        // echo $row_1['time_start'];}
+                                                                                        echo $row['date_type']
+                                                                                        ?></div>
                                                             </div>
                                                             <div class="hours">
                                                                 <img class="calendar-icon" alt="" src="assets/svg/clock.svg" />
@@ -123,18 +135,46 @@ $result = mysqli_query($conn, $sql);
                                                             </div>
                                                         </div>
                                                         <!-- <img class="dots-icon" alt="" src="assets/svg//dots.svg" /> -->
-                                                        <div class="dots-icon" placeholder="">
+                                                        <!-- <div class="dots-icon" placeholder="">
                                                             <select>
-                                                                <button name="edit">
-                                                                    <option> Edit </option>
-                                                                </button>
+
+                                                                <a href="index.php?option=edit-schedule.php?id=<?php
+                                                                                                                // echo $row['schedule_id'] 
+                                                                                                                ?>">
+                                                                    <button name="edit">
+                                                                        <option> Edit </option>
+                                                                    </button>
+                                                                </a>
                                                                 <button name="delete">
                                                                     <option> Delete </option>
                                                                 </button>
 
                                                             </select>
-                                                        </div>
+                                                        </div> -->
 
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                                                            style=" width:80px;"
+                                            
+                                                            >
+                                                                option
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+
+
+                                                                <a href="index.php?option=edit-schedule.php&id=<?php
+                                                                                                                echo $row['device_id']
+                                                                                                                ?>">
+                                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
+                                                                </a>
+                                                                <a href="index.php?option=edit-schedule.php&id=<?php
+                                                                                                                echo $row['device_id']
+                                                                                                                ?>">
+                                                                    <li><button class="dropdown-item" type="button">Delete</button></li>
+                                                                </a>
+
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -2,6 +2,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "mqtt": "^4.3.7",
+<<<<<<< HEAD
     "socket.io": "^4.6.1"
   },
   "name": "da-php",
@@ -13,4 +14,11 @@
   },
   "author": "",
   "license": "ISC"
+=======
+    "socket.io": "^4.6.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "ws": "^8.13.0"
+  }
+>>>>>>> c4de05187a87ee49e8b77760a8f592453043c36f
 }

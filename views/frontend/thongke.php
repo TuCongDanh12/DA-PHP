@@ -1,45 +1,53 @@
-<div class="col-sm-6 col-md-8  ">
-    <h4 style="font-weight:700">Dữ liệu thống kê</h4>
-    <h6 style="font-weight:400">Thống kê dữ liệu thu thập từ các thiết bị Input</h6>
-    <div class="container overflow-hidden text-center">
-        <div class="row gy-5">
-            <div class="col-6">
-                <div class="p-3">
+<H2 class="title">DỮ LIỆU THỐNG KÊ</H2>
+        <H4 class="sub-title">Thống kê dữ liệu thu thập từ các thiết bị Input</H4>
+        <div class="device-container">
+          <div class="grid">
+            <div class="row">
+              <div class="device c-6">
+                <div class="device-content">
+                  <div class="Den"></div>
+                  <div class="dev-text">
+                    <b class="dev-name">Ánh sáng</b>
+                    <div class="dev-describe">Cảm biến ánh sáng</div>
+                  </div>
+                </div>
+              </div>
+              <div class="device c-6">
 
-                    <span class="den">
-                        <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
-                    </span>
-                    <h4 style="color:white">Ánh sáng</h4>
-                    <h5 style="color:rgba(160, 152, 174, 1)">Cảm biến ánh sáng</h5>
+                <div class="device-content">
+                  <div class="Nuoc"></div>
+                  <div class="dev-text">
+                    <b class="dev-name">Nhiệt độ</b>
+                    <div class="dev-describe">Cảm biến nhiệt độ, độ ẩm</div>
+                  </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="p-3">
-                    <span class="den">
-                        <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
-                    </span>
-                    <h4 style="color:white">Nhiệt độ</h4>
-                    <h5 style="color:rgba(160, 152, 174, 1)">Cảm biến nhiệt độ</h5>
+
+
+              </div>
+              <div class="device c-6">
+
+                <div class="device-content">
+                  <div class="Nuoc"></div>
+                  <div class="dev-text">
+                    <b class="dev-name">Độ ẩm</b>
+                    <div class="dev-describe">Cảm biến nhiệt độ, độ ẩm</div>
+                  </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="p-3">
-                    <span class="den">
-                        <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
-                    </span>
-                    <h4 style="color:white">Độ ẩm</h4>
-                    <h5 style="color:rgba(160, 152, 174, 1)">Cảm biến độ ẩm</h5>
+
+
+              </div>
+              <div class="device c-6">
+
+                <div class="device-content">
+                  <div class="Dat"></div>
+                  <div class="dev-text">
+                    <b class="dev-name">Độ ẩm đất</b>
+                    <div class="dev-describe">Cảm biến độ ẩm đất</div>
+                  </div>
                 </div>
+
+
+              </div>
             </div>
-            <div class="col-6">
-                <div class="p-3">
-                    <span class="den">
-                        <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
-                    </span>
-                    <h4 style="color:white">Độ ẩm đất</h4>
-                    <h5 style="color:rgba(160, 152, 174, 1)">Cảm biến độ ẩm đất</h5>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-</div>

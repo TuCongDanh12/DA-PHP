@@ -27,11 +27,11 @@
 .logo {
   display: flex;
 }
-/* .name {
+.name {
   display: flex;
   align-items: center;
   color: #10A19D;
-} */
+}
 .on{
   color: #FF7000;
 }
@@ -77,23 +77,23 @@
 .dropholder{
   width: 322px;
   height: 50px;
-
+  /* margin:100px auto; */
   padding:0 0 0 20px;
   border-radius:10px;
   font:18px arial;
   color: #fff;
   position: relative;
   box-sizing:border-box;
-
-  border:1px solid #6f9aad;
-
+  /* border:1px solid #9b0db9; */
+  border:1px solid #99f4d5;
+  /* animation: move 3s ease-in-out infinite; */
   position: relative;
 }
 .dropholder:hover, .dropholder:hover:after{
   animation-play-state:paused;
 }
 /* bóng chuyển động boxshadow */
-.dropholder:after{
+/* .dropholder:after{
   content:"";
   position: absolute;
   width: 250px;
@@ -106,7 +106,7 @@
   border-radius:50%;
   box-shadow:0 15px 10px rgba(0,0,0, 0.4);
   animation: moveShadow 3s ease-in-out infinite;
-}
+} */
 p{
   float: left;
 }
@@ -119,7 +119,7 @@ margin-top: 15px;
   font-size:16px;
 }
 .drop-down, .dropholder{
-  background:linear-gradient(#1c82ad ,#5598b5);
+  background:linear-gradient(#00b176 ,#0ad18f);
 }
 .drop-down{
   margin-left:20px;
@@ -129,11 +129,11 @@ margin-top: 15px;
   border-radius:0 10px 10px 0;
   cursor: pointer;
   height:48px;
-  border-left:1px solid #6f9aad;
+  border-left:1px solid #9bf5d7;
   position: relative;
 }
 .drop-down:hover{
-  background:linear-gradient(#2b8cb6 ,#41a5cf);
+  background:linear-gradient(#0dd190 ,#0dd18f);
 }
 .drop-down:after{
   content:"▾";
@@ -154,8 +154,8 @@ margin-top: 15px;
   transform-style: preserve-3d;
   transform:rotatey(180deg) rotateX(5deg) translatey(100px);
   backface-visibility: hidden;
-  background:linear-gradient(#4dc2f8 ,#0d82b9);
-  border:2px solid #6f9aad;
+  background:linear-gradient(#27dea1 ,#52deaf);
+  border:2px solid #9bf2d5;
   border-radius:10px;
   transition:all 0.8s;
   z-index:5;
@@ -164,22 +164,22 @@ margin-top: 15px;
 .menubox li{
   padding: 10px 10px;
   border-bottom:1px dotted #fff;
-  color:#e8f8ff; 
+  color:#ffffff; 
   transition:all 0.3s;
 }
 .menubox li:hover{
-  background:#61ccfd;
+  background:#48e6b1;
   padding-left:20px;
 }
-/* /* .menubox li:last-child{
+.menubox li:last-child{
   border:none;
-} */
-/*  */
+}
+
 .showMenu{
    opacity:1;
   transform:rotateX(0deg) translatey(0px);
-} 
- li > i{
+}
+li > i{
   float: left;
   padding-top: 3px;
   padding-right: 8px;
@@ -190,7 +190,7 @@ p > i{
 }
 i{
   opacity: 0.7;
-} */
+}
 /* animation */
 /* @keyframes move{
   0%, 100%{transform:translateY(-10px);}

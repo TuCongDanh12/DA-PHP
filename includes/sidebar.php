@@ -1,41 +1,39 @@
-<div class="col-6 col-md-4">
-    <div class="sidebar">
-        <a href="index.php?option=home.php&tuychon=trangchu.php" style="text-decoration: none; color: black">
-            <div class="ele">
-                <i class="bi bi-house-door-fill"></i>
-                <h6>Home</h6>
-            </div>
+<div class="sidebar">
+  <div class="light-mode">
+    <div>
+      <ul class="menu">
+        <a href="index.php?option=home.php&tuychon=trangchu.php">
+          <li class="menu-item active">
+            <i class="icon fas fa-user mr-5"></i>Home
+          </li>
         </a>
 
-        <a href="index.php?option=home.php&tuychon=dieukhien.php" style="text-decoration: none; color: black">
-            <div class="ele">
-                <i class="bi bi-controller"></i>
-                <h6>Điều khiển</h6>
-            </div>
+        <a href="index.php?option=home.php&tuychon=dieukhien.php">
+          <li class="menu-item">
+            <i class="icon fas fa-star mr-5"></i>Điều khiển
+          </li>
         </a>
-        <a href="index.php?option=home.php&tuychon=lichhd.php" style="text-decoration: none; color: black">
-            <div class="ele">
-                <i class="bi bi-calendar2-day-fill"></i>
-                <h6>Lịch hoạt động</h6>
-            </div>
+
+        <a href="index.php?option=home.php&tuychon=lichhd.php">
+          <li class="menu-item"><i class="icon fas fa-check-square mr-5"></i>Lịch hoạt động</li>
         </a>
-        <a href="index.php?option=home.php&tuychon=thongke.php" style="text-decoration: none; color: black">
-            <div class="ele">
-                <i class="bi bi-bar-chart-fill" style="height: 30px"></i>
-                <h6>Thống kê dữ liệu</h6>
-            </div>
+
+        <a href="index.php?option=home.php&tuychon=thongke.php">
+          <li class="menu-item"><i class="icon fas fa-compass mr-5"></i>Dữ liệu thống kê</li>
         </a>
-        <a href="index.php?option=home.php&tuychon=lichsu.php" style="text-decoration: none; color: black">
-            <div class="ele">
-                <i class="bi bi-clock-history"></i>
-                <h6>Lịch sử hoạt động</h6>
-            </div>
+
+        <a href="index.php?option=home.php&tuychon=lichsu.php">
+          <li class="menu-item"><i class="icon fas fa-image mr-5"></i>Lịch sử hoạt động</li>
         </a>
-        <a href="" style="text-decoration: none; color: black">
-            <div class="ele">
-                <i class="bi bi-gear-fill"></i>
-                <h6>Cài đặt</h6>
-            </div>
+
+        <li class="divider"></li>
+
+        <a href="">
+          <li class="menu-item"><i class="icon fas fa-bell mr-5"></i>Cài đặt</li>
         </a>
+      </ul>
     </div>
+
+  </div>
 </div>
+<script src="assets/js/defaultlayout.js"></script>

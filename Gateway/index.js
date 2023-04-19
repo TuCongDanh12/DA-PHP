@@ -25,6 +25,7 @@ const list_feed = [
   "V16"
 ];
 
+
 const client = mqtt.connect(`mqtt://${MQTT_SERVER}:${MQTT_PORT}`, {
   username: MQTT_USERNAME,
   password: MQTT_PASSWORD

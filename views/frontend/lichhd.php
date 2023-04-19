@@ -1,44 +1,43 @@
-<div class="col-sm-6 col-md-8  ">
-    <h4>Lịch hoạt động của thiết bị</h4>
-    <div class="wrapper">
 
-        <div class="device1">
-            <div class="container overflow-hidden text-center">
-                <div class="row gx-5">
-
-                    <div class="col">
-                        <a href="index.php?option=lichhdden.php" style="text-decoration:none ">
-                            <div class="p-3">
-                                <span class="den">
-                                    <i class="bi bi-lightbulb-fill" style="font-size:70px;color:white"></i>
-                                </span>
-                                <h4 style="color:white">Đèn</h4>
-                                <h5 style="color:rgba(160, 152, 174, 1)">Hệ thống ánh sáng</h5>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="index.php?option=lichhdmaybom.php" style="text-decoration:none ">
-                            <div class="p-3">
-                                <span class="nuoc">
-                                    <i class="bi bi-droplet" style="font-size:70px;color:white"></i>
-                                </span>
-                                <h4 style="color:white">Vòi nước</h4>
-                                <h5 style="color:rgba(160, 152, 174, 1)">Hệ thống nước</h5>
-
-                            </div>
-                        </a>
-                    </div>
+<H2 class="title">LỊCH HOẠT ĐỘNG THIẾT BỊ</H2>
+        <div class="device-container">
+          <div class="grid">
+            <div class="row">
+            
+              <div class="device c-6">
+              <a href="index.php?option=lichhdden.php">
+                <div class="device-content">
+                  <div class="Den"></div>
+                  <div class="dev-text">
+                    <b class="dev-name">Đèn</b>
+                    <div class="dev-describe">Hệ thống ánh sáng</div>
+                  </div>
                 </div>
+                </a>
+              </div>
+              
+
+              
+              <div class="device c-6">
+              <a href="index.php?option=lichhdmaybom.php">
+                <div class="device-content">
+                  <div class="Nuoc"></div>
+                  <div class="dev-text">
+                    <b class="dev-name">Bơm nước</b>
+                    <div class="dev-describe">Hệ thống nước</div>
+                  </div>
+                </div>
+                </a>
+              </div>
+              
+
+              
             </div>
-
+          </div>
         </div>
 
-        <div class="device2">
 
-        </div>
 
-    </div>
 
-</div>
+
+
